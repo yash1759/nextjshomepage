@@ -1,6 +1,8 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 
 const Navbar: React.FC = () => {
+    const [isOpen, setIsOpen] = useState(false); 
     return (
         <div className="bg-primary-color font-sans w-full m-0 sticky top-0 left-0 right-0 z-50 shadow-2xl transform-gpu">
 
@@ -26,14 +28,14 @@ const Navbar: React.FC = () => {
                             <a href="#" className="text-white text-sm font-semibold border-2 border-red-400/50 px-6 py-2 rounded-lg transition-all duration-300 hover:text-red-300 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/50 hover:-translate-y-1 transform-gpu backdrop-blur-sm bg-gradient-to-r from-red-600/20 to-red-500/20 hover:from-red-500/30 hover:to-red-400/30">Sign up</a>
                         </div>
 
-                        <div className="sm:hidden cursor-pointer transform hover:scale-110 transition-transform duration-300 hover:rotate-3">
+                        <div className="sm:hidden cursor-pointer transform hover:scale-110 transition-transform duration-300 hover:rotate-3" onClick={() => setIsOpen(!isOpen)}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-red-300 drop-shadow-lg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M3,6 L21,6 C21.5522847,6 22,6.44771525 22,7 C22,7.55228475 21.5522847,8 21,8 L3,8 C2.44771525,8 2,7.55228475 2,7 C2,6.44771525 2.44771525,6 3,6 Z M3,11 L21,11 C21.5522847,11 22,11.4477153 22,12 C22,12.5522847 21.5522847,13 21,13 L3,13 C2.44771525,13 2,12.5522847 2,12 C2,11.4477153 2.44771525,11 3,11 Z M3,16 L21,16 C21.5522847,16 22,16.4477153 22,17 C22,17.5522847 21.5522847,18 21,18 L3,18 C2.44771525,18 2,17.5522847 2,17 C2,16.4477153 2.44771525,16 3,16 Z" />
                             </svg>
                         </div>
                     </div>
 
-                    <div className="block sm:hidden bg-gradient-to-br from-red-800/90 to-red-900/90 border-t-2 border-red-600/30 py-4 backdrop-blur-sm shadow-inner">
+                    <div className={`block sm:hidden bg-gradient-to-br from-red-800/90 to-red-900/90 border-t-2 border-red-600/30 py-4 backdrop-blur-sm shadow-inner ${isOpen ? 'block' : 'hidden'}`}>
                         <div className="flex flex-col space-y-2">
                             {["Home", "About", "Services", "Contact"].map((item) => (
                                 <a key={item} href="#" className="text-white text-sm font-semibold hover:text-red-300 mb-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-red-600/20 hover:shadow-lg hover:shadow-red-500/25 transform-gpu backdrop-blur-sm border border-transparent hover:border-red-400/30">
