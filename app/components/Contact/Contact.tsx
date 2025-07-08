@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import Container from '../container/Container'
 import { Mail, MessageCircle } from 'lucide-react'
 
@@ -11,7 +11,7 @@ const Contact = () => {
                 <div className='opacity-0 text-center transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in'>
                     <p className='text-gray-600 text-lg mb-4 capitalize'>Contact</p>
                     <h3 className='text-white text-4xl font-bold'>Get in touch today</h3>
-                    <p className='text-gray-600 text-lg mt-4'>We're here to assist your business.</p>
+                    <p className='text-gray-600 text-lg mt-4'>We{`'`}re here to assist your business.</p>
                 </div>
                 <div className='flex text-center items-center justify-between gap-4 mt-16 md:w-[50%] mx-auto'>
                     <div className='flex flex-col items-center justify-center'>

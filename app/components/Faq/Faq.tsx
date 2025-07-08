@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
 import Container from '../container/Container'
-import { MessageCircle, RefreshCw, Sparkle, User, ChevronDown } from 'lucide-react'
 
 const Faq = () => {
     const containerRef = useRef<HTMLDivElement>(null)
