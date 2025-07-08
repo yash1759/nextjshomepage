@@ -1,57 +1,159 @@
+// components/NavBar.jsx
 "use client"
-import React, { useState } from "react";
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-const Navbar: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false); 
+export default function NavBar() {
+    const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <div className="bg-primary-color font-sans w-full m-0 sticky top-0 left-0 right-0 z-50 shadow-2xl transform-gpu">
-
-            <div className="bg-gradient-to-r bg-primary-color text-white shadow-2xl border-b-2 border-red-500/30 backdrop-blur-sm">
-                <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-between py-4">
-                        <div className="transform hover:scale-110 transition-transform duration-300 hover:rotate-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-red-300 drop-shadow-lg filter brightness-110" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M14.5,16 C14.2238576,16 14,15.7761424 14,15.5 L14,9.5 C14,9.22385763 14.2238576,9 14.5,9 L16,9 C17.1045695,9 18,9.8954305 18,11 C18,11.4116588 17.8756286,11.7942691 17.6624114,12.1123052 C18.4414283,12.3856578 19,13.1275982 19,14 C19,15.1045695 18.1045695,16 17,16 L14.5,16 Z M15,15 L17,15 C17.5522847,15 18,14.5522847 18,14 C18,13.4477153 17.5522847,13 17,13 L15,13 L15,15 Z M15,12 L16,12 C16.5522847,12 17,11.5522847 17,11 C17,10.4477153 16.5522847,10 16,10 L15,10 L15,12 Z M12.9499909,4 L19.5,4 C20.8807119,4 22,5.11928813 22,6.5 L22,19.5 C22,20.8807119 20.8807119,22 19.5,22 L13.5,22 C12.2700325,22 11.2475211,21.1117749 11.0389093,19.9417682 C10.8653433,19.9799013 10.6850188,20 10.5,20 L4.5,20 C3.11928813,20 2,18.8807119 2,17.5 L2,4.5 C2,3.11928813 3.11928813,2 4.5,2 L10.5,2 C11.709479,2 12.7183558,2.85887984 12.9499909,4 Z M13,5 L13,17.5 C13,18.3179089 12.6072234,19.0440799 12,19.5001831 C12.0000989,20.3285261 12.6716339,21 13.5,21 L19.5,21 C20.3284271,21 21,20.3284271 21,19.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L13,5 Z M8.56005566,11.4964303 C8.54036595,11.4987873 8.52032459,11.5 8.5,11.5 L6.5,11.5 C6.47967541,11.5 6.45963405,11.4987873 6.43994434,11.4964303 L5.96423835,12.6856953 C5.86168164,12.9420871 5.57069642,13.066795 5.31430466,12.9642383 C5.0579129,12.8616816 4.93320495,12.5706964 5.03576165,12.3143047 L7.03576165,7.31430466 C7.20339081,6.89523178 7.79660919,6.89523178 7.96423835,7.31430466 L9.96423835,12.3143047 C10.066795,12.5706964 9.9420871,12.8616816 9.68569534,12.9642383 C9.42930358,13.066795 9.13831836,12.9420871 9.03576165,12.6856953 L8.56005566,11.4964303 Z M8.16148352,10.5 L7.5,8.8462912 L6.83851648,10.5 L8.16148352,10.5 Z M10.5,3 L4.5,3 C3.67157288,3 3,3.67157288 3,4.5 L3,17.5 C3,18.3284271 3.67157288,19 4.5,19 L10.5,19 C11.3284271,19 12,18.3284271 12,17.5 L12,4.5 C12,3.67157288 11.3284271,3 10.5,3 Z M6.5,18 C6.22385763,18 6,17.7761424 6,17.5 C6,17.2238576 6.22385763,17 6.5,17 L8.5,17 C8.77614237,17 9,17.2238576 9,17.5 C9,17.7761424 8.77614237,18 8.5,18 L6.5,18 Z M15.5,20 C15.2238576,20 15,19.7761424 15,19.5 C15,19.2238576 15.2238576,19 15.5,19 L17.5,19 C17.7761424,19 18,19.2238576 18,19.5 C18,19.7761424 17.7761424,20 17.5,20 L15.5,20 Z" />
-                            </svg>
-                        </div>
-
-                        <div className="hidden sm:flex sm:items-center space-x-1">
-                            {["Home", "About", "Services", "Contact"].map((item) => (
-                                <a key={item} href="#" className="text-white text-sm font-semibold hover:text-red-300 mr-4 last:mr-0 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-red-600/20 hover:shadow-lg hover:shadow-red-500/25 hover:-translate-y-1 transform-gpu backdrop-blur-sm border border-transparent hover:border-red-400/30">
-                                    {item}
-                                </a>
-                            ))}
-                        </div>
-
-                        <div className="hidden sm:flex sm:items-center space-x-3">
-                            <a href="#" className="text-white text-sm font-semibold hover:text-red-300 mr-4 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-red-600/20 hover:shadow-lg hover:shadow-red-500/25 hover:-translate-y-1 transform-gpu backdrop-blur-sm border border-transparent hover:border-red-400/30">Sign in</a>
-                            <a href="#" className="text-white text-sm font-semibold border-2 border-red-400/50 px-6 py-2 rounded-lg transition-all duration-300 hover:text-red-300 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/50 hover:-translate-y-1 transform-gpu backdrop-blur-sm bg-gradient-to-r from-red-600/20 to-red-500/20 hover:from-red-500/30 hover:to-red-400/30">Sign up</a>
-                        </div>
-
-                        <div className="sm:hidden cursor-pointer transform hover:scale-110 transition-transform duration-300 hover:rotate-3" onClick={() => setIsOpen(!isOpen)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-red-300 drop-shadow-lg" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M3,6 L21,6 C21.5522847,6 22,6.44771525 22,7 C22,7.55228475 21.5522847,8 21,8 L3,8 C2.44771525,8 2,7.55228475 2,7 C2,6.44771525 2.44771525,6 3,6 Z M3,11 L21,11 C21.5522847,11 22,11.4477153 22,12 C22,12.5522847 21.5522847,13 21,13 L3,13 C2.44771525,13 2,12.5522847 2,12 C2,11.4477153 2.44771525,11 3,11 Z M3,16 L21,16 C21.5522847,16 22,16.4477153 22,17 C22,17.5522847 21.5522847,18 21,18 L3,18 C2.44771525,18 2,17.5522847 2,17 C2,16.4477153 2.44771525,16 3,16 Z" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div className={`block sm:hidden bg-gradient-to-br from-red-800/90 to-red-900/90 border-t-2 border-red-600/30 py-4 backdrop-blur-sm shadow-inner ${isOpen ? 'block' : 'hidden'}`}>
-                        <div className="flex flex-col space-y-2">
-                            {["Home", "About", "Services", "Contact"].map((item) => (
-                                <a key={item} href="#" className="text-white text-sm font-semibold hover:text-red-300 mb-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-red-600/20 hover:shadow-lg hover:shadow-red-500/25 transform-gpu backdrop-blur-sm border border-transparent hover:border-red-400/30">
-                                    {item}
-                                </a>
-                            ))}
-                            <div className="flex justify-between items-center border-t-2 border-red-600/30 pt-3 space-x-2">
-                                <a href="#" className="text-white text-sm font-semibold hover:text-red-300 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-red-600/20 hover:shadow-lg hover:shadow-red-500/25 transform-gpu backdrop-blur-sm border border-transparent hover:border-red-400/30">Sign in</a>
-                                <a href="#" className="text-white text-sm font-semibold border-2 border-red-400/50 px-4 py-2 rounded-lg transition-all duration-300 hover:text-red-300 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/50 transform-gpu backdrop-blur-sm bg-gradient-to-r from-red-600/20 to-red-500/20 hover:from-red-500/30 hover:to-red-400/30">Sign up</a>
-                            </div>
-                        </div>
+        <header className={`fixed ${isScrolled ? 'top-0' : 'top-4'} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-2' : 'bg-transparent py-5'}`}>
+            <div className="mx-auto py-2 flex h-16 max-w-screen-xl items-center justify-between px-4">
+                {/* Logo / Brand */}
+                <div className="flex items-center">
+                    <div className={`relative transition-all duration-300 ${isScrolled ? 'h-20 w-20' : 'h-30 w-30'}`}>
+                        <Link href="/">
+                            <Image
+                                src="/images/logo/logo.png"
+                                alt="Tribeca Date Club Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </Link>
                     </div>
                 </div>
-            </div>
-        </div>
-    );
-};
 
-export default Navbar;
+                {/* Desktop Nav Links */}
+                <nav className="hidden items-center space-x-6 text-sm font-light text-white lg:flex">
+                    {["HOME", "ABOUT", "SERVICES", "CONTACT"].map((item) => (
+                        <Link href="#" className="hover:text-gray-300 transition-colors">{item}</Link>
+                    ))}
+                </nav>
+
+                {/* Desktop "JOIN THE WAITLIST" Button */}
+                <div className="hidden lg:block">
+                    <Link
+                        href="mailto:info@tribecadate.com"
+                        className="bg-white px-6 py-4 text-xs tracking-wide font-light text-black transition-colors duration-200 hover:bg-gray-200"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        HIRE US
+                    </Link>
+                </div>
+
+                {/* Mobile Menu Toggle Button */}
+                <button
+                    className="text-white lg:hidden"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle Menu"
+                >
+                    {isOpen ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="h-6 w-6"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="h-6 w-6"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5" />
+                        </svg>
+                    )}
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`fixed inset-0 z-40 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden`}>
+                <div className="absolute inset-0 bg-black/95">
+                    <div className="flex justify-end p-4">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="text-white"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="currentColor"
+                                className="h-6 w-6"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <nav className="flex h-full items-center justify-center">
+                        <ul className="space-y-8 text-center">
+                            {/* <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  ABOUT
+                </Link>
+              </li>
+              <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  TESTIMONIALS
+                </Link>
+              </li>
+              <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  MEMBERSHIP
+                </Link>
+              </li>
+              <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  CELEBRITY SERVICES
+                </Link>
+              </li>
+              <li>
+                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
+                  EVENTS
+                </Link>
+              </li> */}
+                            <li>
+                                <Link
+                                    href="mailto:info@tribecadate.com"
+                                    className="mt-8 inline-block rounded-none bg-white px-8 py-4 text-sm font-light text-black transition hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    JOIN THE WAITLIST
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    )
+}
