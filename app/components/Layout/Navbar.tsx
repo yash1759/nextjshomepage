@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Sparkle } from 'lucide-react'
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -26,18 +27,15 @@ export default function NavBar() {
             <div className="mx-auto py-2 flex h-16 max-w-screen-xl items-center justify-between px-4">
                 {/* Logo / Brand */}
                 <div className="flex items-center">
-                    <div className={`relative transition-all duration-300 ${isScrolled ? 'h-20 w-20' : 'h-30 w-30'}`}>
                         <Link href="/">
-                            <Image
-                                src="/images/logo/logo.png"
-                                alt="Tribeca Date Club Logo"
-                                fill
-                                className="object-contain"
-                                priority
-                            />
+                            <div className='flex gap-2 items-center justify-center'>
+                                <div className='flex items-center justify-center gap-4 p-2 bg-[#121837] rounded-md w-10 h-10'>
+                                    <Sparkle className='text-[white]' size={40} />
+                                </div>
+                                <p className='text-white text-lg font-semibold '>SYBOTSTACK</p>
+                            </div>
                         </Link>
                     </div>
-                </div>
 
                 {/* Desktop Nav Links */}
                 <nav className="hidden items-center space-x-6 text-sm font-light text-white lg:flex">

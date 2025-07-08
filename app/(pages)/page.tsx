@@ -1,15 +1,23 @@
 import AboveFold from "../components/AboveFold/AboveFold";
 import Container from "../components/container/Container";
+import Howtowork from "../components/Howtowork/Howtowork";
+import Growth from "../components/Growth/Growth";
+import Faq from "../components/Faq/Faq";
+import Contact from "../components/Contact/Contact";
 
 const Home = () => {
   return (
-    <div>
-        <AboveFold />
-      <Container>
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-4xl font-bold">Welcome to Sybotstack</h1>
-        </div>
-      </Container>
+    <div className="">
+      <AboveFold />
+      <div className="bg-[#0C182A]">
+        <Container>
+          <Howtowork />
+
+        </Container>
+      </div>
+      <Growth />
+      <Faq />
+      <Contact />
     </div>
   );
 }

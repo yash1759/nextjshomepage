@@ -31,10 +31,6 @@ const AboveFold: React.FC = () => {
                     <p className="leading-relaxed animate-typewriter drop-shadow-xl">
                         <span className="inline-block animate-fade-in-delay-5 hover:text-red-200 transition-colors duration-300">At Sybotstack, we{`'`}re a full-spectrum digital product studio</span>{" "}
                         <span className="inline-block animate-fade-in-delay-6 hover:text-red-200 transition-colors duration-300">on a mission to turn bold ideas into market-ready</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-7 hover:text-red-200 transition-colors duration-300">web and mobile solutions. We blend product strategy,</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-8 hover:text-red-200 transition-colors duration-300">intuitive design, and robust development to help</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-9 hover:text-red-200 transition-colors duration-300">startups, nonprofits, and enterprises build experiences</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-10 hover:text-red-200 transition-colors duration-300">that resonate and scale.</span>
                     </p>
                 </div>
                 
