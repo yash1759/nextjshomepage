@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
                         </div>
                         <p className='text-white text-lg font-semibold '>SYBOTSTACK</p>
                     </div>  
-                    <nav className="items-center justify-center my-8 md:space-x-18 text-sm font-light text-white lg:flex">
+                    <nav className="items-center justify-center my-8 space-x-4 md:space-x-18 text-sm font-light text-white lg:flex">
                     {["HOME", "ABOUT", "SERVICES", "CONTACT"].map((item) => (
                         <Link key={item} href="#" className="hover:text-gray-300 transition-colors">{item}</Link>
                     ))}
