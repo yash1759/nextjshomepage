@@ -42,7 +42,7 @@ export default function NavBar() {
                 {/* Desktop Nav Links */}
                 <nav className="hidden items-center space-x-6 text-sm font-light text-white lg:flex">
                     {["HOME", "ABOUT", "SERVICES", "CONTACT"].map((item) => (
-                        <Link href="#" className="hover:text-gray-300 transition-colors">{item}</Link>
+                        <Link key={item} href="#" className="hover:text-gray-300 transition-colors">{item}</Link>
                     ))}
                 </nav>
 
