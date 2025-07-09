@@ -56,7 +56,7 @@ const Managers = () => {
                     </p>
                 </div>
                 
-                <div ref={containerRef} className='grid w-[70%] mx-auto md:grid-cols-2 justify-center lg:grid-cols-2 gap-8'>
+                <div ref={containerRef} className='grid md:w-[70%] grid-cols-1 mx-auto md:grid-cols-2 justify-center lg:grid-cols-2 gap-8'>
                     {managersData.map((manager, index) => (
                         <div
                             key={index}
