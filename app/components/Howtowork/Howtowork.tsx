@@ -44,12 +44,6 @@ const Howtowork = () => {
             "cta": "Protect",
             image:"https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
         },
-        {
-            "title": "Reliable network management",
-            "description": "End-to-end network setup, monitoring, and optimization for seamless business connectivity and performance.",
-            "cta": "Details",
-            image:"https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c626b329afea14f01_5dff169e-f4db-4a05-853e-025708d36a7f.avif"
-        }
     ]
 
     return (
