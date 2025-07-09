@@ -14,29 +14,25 @@ const AboveFold: React.FC = () => {
                     priority
                 />
                 {/* Overlay for better text readability */}
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
+                <div className="absolute inset-0 bg-black/60"></div>
             </div>
             
             {/* Centered Content Overlay */}
-            <div className="relative mt-20 z-10 text-center max-w-4xl mx-auto px-4 animate-fade-in-up">
-                <div className="text-center text-white text-5xl font-bold animate-slide-in-left">
-                    <h1 className="leading-tight animate-text-glow drop-shadow-2xl"> 
-                        <span className="inline-block animate-fade-in-delay-1 hover:scale-110 transition-transform duration-300 hover:text-red-300">Crafting</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-2 hover:scale-110 transition-transform duration-300 hover:text-red-300">Future-Ready</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-3 hover:scale-110 transition-transform duration-300 hover:text-red-300">Digital</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-4 hover:scale-110 transition-transform duration-300 hover:text-red-300">Experiences</span>
+            <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+                <div className="text-center text-white text-5xl font-bold mb-8">
+                    <h1 className="leading-tight"> 
+                        Crafting Future-Ready Digital Experiences
                     </h1>
                 </div>
-                <div className="text-center mt-8 text-white text-2xl animate-slide-in-right">
-                    <p className="leading-relaxed animate-typewriter drop-shadow-xl">
-                        <span className="inline-block animate-fade-in-delay-5 hover:text-red-200 transition-colors duration-300">At Sybotstack, we{`'`}re a full-spectrum digital product studio</span>{" "}
-                        <span className="inline-block animate-fade-in-delay-6 hover:text-red-200 transition-colors duration-300">on a mission to turn bold ideas into market-ready</span>{" "}
+                <div className="text-center text-white text-2xl mb-12">
+                    <p className="leading-relaxed">
+                        At Sybotstack, we're a full-spectrum digital product studio on a mission to turn bold ideas into market-ready solutions that drive real business impact.
                     </p>
                 </div>
                 
-                {/* Animated CTA Button */}
-                <div className="mt-12 animate-fade-in-delay-11">
-                    <button className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/50 animate-pulse">
+                {/* CTA Button */}
+                <div>
+                    <button className="bg-[#051023] hover:bg-[#121837] cursor-pointer text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-300">
                         Get Started Today
                     </button>
                 </div>

@@ -2,11 +2,13 @@
 "use client"
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Sparkle } from 'lucide-react'
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const pathname = usePathname()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,33 +23,57 @@ export default function NavBar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    const navItems = [
+        { name: "HOME", route: "/" },
+        { name: "ABOUT", route: "/about-us" },
+        { name: "SERVICES", route: "/services" },
+        { name: "CONTACT", route: "/contact" }
+    ]
+
+    const isActive = (route: string) => {
+        if (route === "/") {
+            return pathname === "/"
+        }
+        return pathname.startsWith(route)
+    }
+
     return (
         <header className={`fixed ${isScrolled ? 'top-0' : 'top-4'} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-2' : 'bg-transparent py-5'}`}>
             <div className="mx-auto py-2 flex h-16 max-w-screen-xl items-center justify-between px-4">
                 {/* Logo / Brand */}
                 <div className="flex items-center">
-                        <Link href="/">
-                            <div className='flex gap-2 items-center justify-center'>
-                                <div className='flex items-center justify-center gap-4 p-2 bg-[#121837] rounded-md w-10 h-10'>
-                                    <Sparkle className='text-[white]' size={40} />
-                                </div>
-                                <p className='text-white text-lg font-semibold '>SYBOTSTACK</p>
+                    <Link href="/">
+                        <div className='flex gap-2 items-center justify-center hover:scale-105 transition-transform duration-200'>
+                            <div className='flex items-center justify-center gap-4 p-2 bg-[#121837] rounded-md w-10 h-10 hover:bg-[#1a2a4a] transition-colors duration-200'>
+                                <Sparkle className='text-[white]' size={40} />
                             </div>
-                        </Link>
-                    </div>
+                            <p className='text-white text-lg font-semibold '>SYBOTSTACK</p>
+                        </div>
+                    </Link>
+                </div>
 
                 {/* Desktop Nav Links */}
                 <nav className="hidden items-center space-x-6 text-sm font-light text-white lg:flex">
-                    {["HOME", "ABOUT", "SERVICES", "CONTACT"].map((item) => (
-                        <Link key={item} href="#" className="hover:text-gray-300 transition-colors">{item}</Link>
+                    {navItems.map((item, index) => (
+                        <Link 
+                            key={index} 
+                            href={item.route} 
+                            className={`transition-all duration-200 hover:scale-105 ${
+                                isActive(item.route) 
+                                    ? 'text-blue-400 font-medium' 
+                                    : 'hover:text-gray-300'
+                            }`}
+                        >
+                            {item.name}
+                        </Link>
                     ))}
                 </nav>
 
-                {/* Desktop "JOIN THE WAITLIST" Button */}
+                {/* Desktop "HIRE US" Button */}
                 <div className="hidden lg:block">
                     <Link
                         href="mailto:info@tribecadate.com"
-                        className="bg-white px-6 py-4 text-xs tracking-wide font-light text-black transition-colors duration-200 hover:bg-gray-200"
+                        className="bg-white px-6 py-4 text-xs tracking-wide font-light text-black transition-all duration-200 hover:bg-gray-200 hover:scale-105 transform"
                         onClick={() => setIsOpen(false)}
                     >
                         HIRE US
@@ -56,7 +82,7 @@ export default function NavBar() {
 
                 {/* Mobile Menu Toggle Button */}
                 <button
-                    className="text-white lg:hidden"
+                    className="text-white lg:hidden hover:scale-110 transition-transform duration-200"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Menu"
                 >
@@ -92,7 +118,7 @@ export default function NavBar() {
                     <div className="flex justify-end p-4">
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="text-white"
+                            className="text-white hover:scale-110 transition-transform duration-200"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -108,43 +134,28 @@ export default function NavBar() {
                     </div>
                     <nav className="flex h-full items-center justify-center">
                         <ul className="space-y-8 text-center">
-                            {/* <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  HOME
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  ABOUT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  TESTIMONIALS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  MEMBERSHIP
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  CELEBRITY SERVICES
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={() => setIsOpen(false)} className="text-2xl font-light text-white hover:text-gray-300">
-                  EVENTS
-                </Link>
-              </li> */}
+                            {navItems.map((item, index) => (
+                                <li key={index}>
+                                    <Link
+                                        href={item.route}
+                                        onClick={() => setIsOpen(false)}
+                                        className={`text-2xl font-light transition-all duration-200 hover:scale-105 ${
+                                            isActive(item.route)
+                                                ? 'text-blue-400 font-medium'
+                                                : 'text-white hover:text-gray-300'
+                                        }`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
                             <li>
                                 <Link
                                     href="mailto:info@tribecadate.com"
-                                    className="mt-8 inline-block rounded-none bg-white px-8 py-4 text-sm font-light text-black transition hover:bg-gray-200"
+                                    className="mt-8 inline-block rounded-none bg-white px-8 py-4 text-sm font-light text-black transition-all duration-200 hover:bg-gray-200 hover:scale-105 transform"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    JOIN THE WAITLIST
+                                    HIRE US
                                 </Link>
                             </li>
                         </ul>

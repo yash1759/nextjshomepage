@@ -3,10 +3,10 @@ import React from 'react'
 import Container from '../container/Container'
 import { Mail, MessageCircle } from 'lucide-react'
 
-const Contact = () => {
+const Contact = ({color="#051023"}) => {
 
     return (
-        <div className="bg-[#051023] perspective-1000 transition-shadow duration-500 py-24">
+        <div className={`bg-[${color}] perspective-1000 transition-shadow duration-500 py-24`}>
             <Container>
                 <div className='opacity-0 text-center transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in'>
                     <p className='text-gray-600 text-lg mb-4 capitalize'>Contact</p>
