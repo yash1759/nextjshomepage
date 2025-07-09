@@ -1,162 +1,115 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Container from '../container/Container'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+const categories = [
+  'All',
+  'Frontend',
+  'Backend',
+  'Cloud',
+  'Database',
+  'Styling',
+  'Testing',
+  'DevOps',
+  'Version Control',
+]
 
-const TechnologyCarousel = () => {
-    const containerRef = useRef<HTMLDivElement>(null)
+const technologies = [
+  { name: "React.js", icon: "⚛️", category: "Frontend", description: "Modern UI development" },
+  { name: "Next.js", icon: "⚡", category: "Full-Stack", description: "React framework for production" },
+  { name: "Angular", icon: "🅰️", category: "Frontend", description: "Enterprise-grade framework" },
+  { name: "Vue.js", icon: "💚", category: "Frontend", description: "Progressive JavaScript framework" },
+  { name: "Node.js", icon: "🟢", category: "Backend", description: "Server-side JavaScript" },
+  { name: "Express.js", icon: "🚂", category: "Backend", description: "Fast web framework" },
+  { name: "Python", icon: "🐍", category: "Backend", description: "Versatile programming language" },
+  { name: "Django", icon: "🎸", category: "Backend", description: "High-level Python framework" },
+  { name: "AWS", icon: "☁️", category: "Cloud", description: "Amazon Web Services" },
+  { name: "Azure", icon: "🔷", category: "Cloud", description: "Microsoft cloud platform" },
+  { name: "Google Cloud", icon: "🔵", category: "Cloud", description: "Google cloud services" },
+  { name: "Docker", icon: "🐳", category: "DevOps", description: "Containerization platform" },
+  { name: "Vercel", icon: "▲", category: "Cloud", description: "Frontend cloud platform for Next.js" },
+  { name: "Firebase", icon: "🔥", category: "Cloud", description: "Google's app development platform" },
+  { name: "MongoDB", icon: "🍃", category: "Database", description: "NoSQL database" },
+  { name: "PostgreSQL", icon: "🐘", category: "Database", description: "Advanced open source database" },
+  { name: "MySQL", icon: "🐬", category: "Database", description: "Reliable database system" },
+  { name: "Redis", icon: "🔴", category: "Database", description: "In-memory data store" },
+  { name: "Tailwind CSS", icon: "🎨", category: "Styling", description: "Utility-first CSS framework" },
+  { name: "Bootstrap", icon: "📦", category: "Styling", description: "Popular CSS framework" },
+  { name: "Material-UI", icon: "🎭", category: "Styling", description: "React UI framework" },
+  { name: "Ant Design", icon: "🐜", category: "Styling", description: "Enterprise UI design" },
+  { name: "Jest", icon: "🃏", category: "Testing", description: "JavaScript testing framework" },
+  { name: "Cypress", icon: "🌲", category: "Testing", description: "End-to-end testing" },
+  { name: "Git", icon: "📝", category: "Version Control", description: "Distributed version control" },
+  { name: "GitHub", icon: "🐙", category: "Version Control", description: "Code collaboration platform" }
+]
 
-    const technologies = [
-        // Frontend Frameworks
-        { name: "React.js", icon: "⚛️", category: "Frontend", description: "Modern UI development" },
-        { name: "Next.js", icon: "⚡", category: "Full-Stack", description: "React framework for production" },
-        { name: "Angular", icon: "🅰️", category: "Frontend", description: "Enterprise-grade framework" },
-        { name: "Vue.js", icon: "💚", category: "Frontend", description: "Progressive JavaScript framework" },
-        
-        // Backend Technologies
-        { name: "Node.js", icon: "🟢", category: "Backend", description: "Server-side JavaScript" },
-        { name: "Express.js", icon: "🚂", category: "Backend", description: "Fast web framework" },
-        { name: "Python", icon: "🐍", category: "Backend", description: "Versatile programming language" },
-        { name: "Django", icon: "🎸", category: "Backend", description: "High-level Python framework" },
-        
-        // Cloud & DevOps
-        { name: "AWS", icon: "☁️", category: "Cloud", description: "Amazon Web Services" },
-        { name: "Azure", icon: "🔷", category: "Cloud", description: "Microsoft cloud platform" },
-        { name: "Google Cloud", icon: "🔵", category: "Cloud", description: "Google cloud services" },
-        { name: "Docker", icon: "🐳", category: "DevOps", description: "Containerization platform" },
-        
-        // Databases
-        { name: "MongoDB", icon: "🍃", category: "Database", description: "NoSQL database" },
-        { name: "PostgreSQL", icon: "🐘", category: "Database", description: "Advanced open source database" },
-        { name: "MySQL", icon: "🐬", category: "Database", description: "Reliable database system" },
-        { name: "Redis", icon: "🔴", category: "Database", description: "In-memory data store" },
-        
-        // UI Frameworks
-        { name: "Tailwind CSS", icon: "🎨", category: "Styling", description: "Utility-first CSS framework" },
-        { name: "Bootstrap", icon: "📦", category: "Styling", description: "Popular CSS framework" },
-        { name: "Material-UI", icon: "🎭", category: "Styling", description: "React UI framework" },
-        { name: "Ant Design", icon: "🐜", category: "Styling", description: "Enterprise UI design" },
-        
-        // Testing & Tools
-        { name: "Jest", icon: "🃏", category: "Testing", description: "JavaScript testing framework" },
-        { name: "Cypress", icon: "🌲", category: "Testing", description: "End-to-end testing" },
-        { name: "Git", icon: "📝", category: "Version Control", description: "Distributed version control" },
-        { name: "GitHub", icon: "🐙", category: "Version Control", description: "Code collaboration platform" }
-    ]
+const PAGE_SIZE = 8
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in')
-                    }
-                })
-            },
-            { threshold: 0.1 }
-        )
+const TechnologyGrid = () => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
-        if (containerRef.current) observer.observe(containerRef.current)
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [selectedCategory])
 
-        return () => observer.disconnect()
-    }, [])
+  const filtered = selectedCategory === 'All'
+    ? technologies
+    : technologies.filter(t => t.category === selectedCategory)
 
-    return (
-        <div className="bg-[#0C182A] py-24">
-            <Container>
-                <div ref={containerRef} className='opacity-0 transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in text-center mb-16'>
-                    <h3 className='text-white text-4xl font-bold mb-4'>Technologies We Master</h3>
-                    <p className='text-gray-300 text-lg mt-4 max-w-3xl mx-auto'>
-                        We work with cutting-edge technologies and frameworks to deliver modern, scalable solutions for your business.
-                    </p>
-                </div>
+  const visibleTechs = filtered.slice(0, visibleCount)
+  const canLoadMore = visibleCount < filtered.length
 
-                <div className="relative">
-                    <Swiper
-                        modules={[Navigation, Pagination, Autoplay]}
-                        spaceBetween={24}
-                        loop={true}
-                        slidesPerView={1}
-                        navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        }}
-                        pagination={{
-                            clickable: true,
-                            el: '.swiper-pagination',
-                        }}
-                        autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: false,
-                        }}
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 24,
-                            },
-                            1024: {
-                                slidesPerView: 4,
-                                spaceBetween: 24,
-                            },
-                        }}
-                        className="technology-swiper"
-                    >
-                        {technologies.map((tech, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="bg-[#051023] p-6 rounded-lg hover:bg-[#121837] hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 transform cursor-pointer group hover:border-blue-500/50 h-full">
-                                    <div className="text-center">
-                                        <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            {tech.icon}
-                                        </div>
-                                        <h4 className="text-white font-semibold text-lg mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                                            {tech.name}
-                                        </h4>
-                                        <p className="text-blue-400 text-xs mb-2 font-medium">
-                                            {tech.category}
-                                        </p>
-                                        <p className="text-gray-400 text-xs group-hover:text-gray-300 transition-colors duration-300">
-                                            {tech.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-
-                    {/* Custom Navigation Buttons */}
-                </div>
-
-                {/* Technology Categories */}
-                <div className="mt-16 text-center">
-                    <div className="opacity-0 transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in">
-                        <h4 className="text-white text-2xl font-bold mb-6">Our Expertise Areas</h4>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            {['Frontend', 'Backend', 'Cloud', 'Database', 'Styling', 'Testing', 'DevOps'].map((category) => (
-                                <span
-                                    key={category}
-                                    className="bg-[#121837] text-blue-400 px-4 py-2 rounded-full text-sm font-medium hover:bg-[#051023] transition-colors duration-200"
-                                >
-                                    {category}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </Container>
-
-           
+  return (
+    <div className="bg-[#0C182A] py-24">
+      <Container>
+        <div ref={containerRef} className='opacity-0 transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in text-center mb-16'>
+          <h3 className='text-white text-4xl font-bold mb-4'>Technologies We Master</h3>
+          <p className='text-gray-300 text-lg mt-4 max-w-3xl mx-auto'>We work with cutting-edge technologies and frameworks to deliver modern, scalable solutions for your business.</p>
         </div>
-    )
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-5 py-2 cursor-pointer rounded-full text-sm font-semibold transition-all duration-200 border ${selectedCategory === cat ? 'bg-blue-600 text-white border-blue-600 shadow-lg' : 'bg-[#121837] text-blue-400 border-[#1a2a4a] hover:bg-blue-900 hover:text-white'}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Technology Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {visibleTechs.map((tech, idx) => (
+            <div key={tech.name + idx} className="bg-[#051023] p-6 rounded-2xl shadow-xl border border-gray-800 hover:bg-[#121837] hover:scale-105 hover:shadow-blue-500/20 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {tech.icon}
+              </div>
+              <h4 className="text-white font-bold text-lg mb-2 group-hover:text-blue-400 transition-colors duration-300">{tech.name}</h4>
+              <span className="text-blue-400 text-xs font-semibold mb-2 uppercase tracking-wide">{tech.category}</span>
+              <p className="text-gray-400 text-sm group-hover:text-gray-200 transition-colors duration-300 mb-0">{tech.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Load More Button */}
+        {canLoadMore && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setVisibleCount(c => c + PAGE_SIZE)}
+              className="px-8 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition-colors duration-200"
+            >
+              Load More
+            </button>
+          </div>
+        )}
+      </Container>
+    </div>
+  )
 }
 
-export default TechnologyCarousel 
+export default TechnologyGrid 
