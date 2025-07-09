@@ -18,7 +18,6 @@ Welcome to my modern website built using **Next.js 14**, powered by **TypeScript
 ## 🖥️ Live Preview
 
 Check out the live website: [https://myweb-iota-lemon.vercel.app/](https://myweb-iota-lemon.vercel.app/)  
-*(Replace with your actual deployed link)*
 
 ---
 
