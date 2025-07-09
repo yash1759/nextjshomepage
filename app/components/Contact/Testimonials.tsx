@@ -70,7 +70,7 @@ const Testimonials = () => {
                 <div className='opacity-0 transform translate-y-8 transition-all duration-1000 ease-out animate-fade-in text-center mb-16'>
                     <h3 className='text-white text-4xl font-bold mb-4'>What Our Clients Say</h3>
                     <p className='text-gray-300 text-lg mt-4 max-w-3xl mx-auto'>
-                        Don't just take our word for it. Here's what our clients have to say about their experience working with us.
+                        Don{`'`}t just take our word for it. Here{`'`}s what our clients have to say about their experience working with us.
                     </p>
                 </div>
                 
@@ -93,7 +93,7 @@ const Testimonials = () => {
                                 
                                 {/* Content */}
                                 <p className='text-gray-300 text-sm leading-relaxed mb-6 flex-grow'>
-                                    "{testimonial.content}"
+                                    {testimonial.content}
                                 </p>
                                 
                                 {/* Author */}
@@ -127,7 +127,7 @@ const Testimonials = () => {
                             Ready to Join Our Success Stories?
                         </h4>
                         <p className='text-gray-300 text-lg mb-8 max-w-2xl mx-auto'>
-                            Let's discuss how we can help transform your business with our innovative IT solutions.
+                            Let{`'`}s discuss how we can help transform your business with our innovative IT solutions.
                         </p>
                         <button className='bg-[#121837] hover:bg-[#051023] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 hover:scale-105 transform'>
                             Start Your Journey

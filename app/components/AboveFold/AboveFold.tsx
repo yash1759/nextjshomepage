@@ -26,7 +26,7 @@ const AboveFold: React.FC = () => {
                 </div>
                 <div className="text-center text-white text-2xl mb-12">
                     <p className="leading-relaxed">
-                        At Sybotstack, we're a full-spectrum digital product studio on a mission to turn bold ideas into market-ready solutions that drive real business impact.
+                        At Sybotstack, we{`'`}re a full-spectrum digital product studio on a mission to turn bold ideas into market-ready solutions that drive real business impact.
                     </p>
                 </div>
                 

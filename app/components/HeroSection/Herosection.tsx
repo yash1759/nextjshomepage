@@ -40,7 +40,7 @@ const Herosection = () => {
                         className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed opacity-0 transform translate-y-8 transition-all duration-1000 ease-out"
                         style={{ transitionDelay: '200ms' }}
                     >
-                        We're a full-spectrum digital product studio dedicated to transforming businesses through innovative technology solutions.
+                        We{`'`}re a full-spectrum digital product studio dedicated to transforming businesses through innovative technology solutions.
                     </p>
                 </div>
             </Container>

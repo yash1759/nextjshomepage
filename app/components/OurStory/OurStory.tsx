@@ -15,7 +15,7 @@ const OurStory = () => {
                             Our journey began with a simple belief: that technology should work for your business, not against it. Today, we help companies of all sizes leverage cutting-edge solutions to achieve their goals.
                         </p>
                         <p className="text-gray-300 text-lg leading-relaxed">
-                            From startups to enterprise organizations, we've built a reputation for delivering reliable, scalable, and innovative IT solutions that drive real business impact.
+                            From startups to enterprise organizations, we{`'`}ve built a reputation for delivering reliable, scalable, and innovative IT solutions that drive real business impact.
                         </p>
                     </div>
                     <div className="relative">

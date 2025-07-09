@@ -78,7 +78,7 @@ const ContactForm = () => {
                         <div className="animate-on-scroll opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
                             <h2 className="text-3xl font-bold text-white mb-4">Get in Touch</h2>
                             <p className="text-gray-300 text-lg">
-                                Ready to transform your business? Let's discuss how we can help you achieve your goals.
+                                Ready to transform your business? Let{`'`}s discuss how we can help you achieve your goals.
                             </p>
                         </div>
 
