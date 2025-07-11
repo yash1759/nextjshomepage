@@ -14,10 +14,10 @@ const Home = () => {
   return (
     <div className="">
       <AboveFold 
-        title={homeData.hero.title}
-        subtitle={homeData.hero.subtitle}
-        ctaText={homeData.hero.ctaText}
-        backgroundImage={homeData.hero.backgroundImage}
+        title={homeData.title}
+        subtitle={homeData.subtitle}
+        ctaText={homeData.ctaText}
+        backgroundImage={homeData.backgroundImage}
       />
       <div className="bg-[#0C182A]">
         <Container>

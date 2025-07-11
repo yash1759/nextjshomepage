@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Sparkle } from 'lucide-react'
+import Image from 'next/image'
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -44,10 +45,11 @@ export default function NavBar() {
                 <div className="flex items-center">
                     <Link href="/">
                         <div className='flex gap-2 items-center justify-center hover:scale-105 transition-transform duration-200'>
-                            <div className='flex items-center justify-center gap-4 p-2 bg-[#121837] rounded-md w-10 h-10 hover:bg-[#1a2a4a] transition-colors duration-200'>
+                            {/* <div className='flex items-center justify-center gap-4 p-2 bg-[#121837] rounded-md w-10 h-10 hover:bg-[#1a2a4a] transition-colors duration-200'>
                                 <Sparkle className='text-[white]' size={40} />
                             </div>
-                            <p className='text-white text-lg font-semibold '>SYBOTSTACK</p>
+                            <p className='text-white text-lg font-semibold '>SYBOTSTACK</p> */}
+                            <Image src="/logo/sywhite.png" alt="Sybotstack" width={200} height={150} />
                         </div>
                     </Link>
                 </div>

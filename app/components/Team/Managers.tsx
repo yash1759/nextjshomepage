@@ -24,27 +24,27 @@ const Managers = () => {
 
         return () => observer.disconnect()
     }, [])
-
     const managersData = [
         {
-            name: "Yash Kumar",
-            position: "Chief Executive Officer",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
-            bio: "Sarah leads our company with over 15 years of experience in IT strategy and digital transformation. She has successfully guided numerous Fortune 500 companies through their digital journeys.",
-            linkedin: "https://linkedin.com/in/sarah-johnson",
-            email: "sarah@sybotstack.com",
-            website: "https://sarahjohnson.com"
+          name: "Yash Kumar",
+          position: "Chief Executive Officer",
+          image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
+          bio: "Yash is a seasoned full-stack developer and business leader with 15+ years of experience in scaling tech ventures and leading digital strategy.",
+          linkedin: "https://linkedin.com/in/yash-kumar",
+          email: "yash@sybotstack.com",
+          website: "https://yashkumar.com"
         },
         {
-            name: "Shubham Sharma",
-            position: "Chief Technology Officer",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
-            bio: "Michael is a technology visionary with expertise in cloud architecture, cybersecurity, and emerging technologies. He ensures our solutions remain at the cutting edge of innovation.",
-            linkedin: "https://linkedin.com/in/michael-chen",
-            email: "michael@sybotstack.com",
-            website: "https://michaelchen.dev"
-        },
-    ];
+          name: "Shubham Sharma",
+          position: "Chief Technology Officer",
+          image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
+          bio: "Shubham is a full-stack engineer and cloud expert who leads the company's technical vision, infrastructure, and product innovation.",
+          linkedin: "https://linkedin.com/in/shubham-sharma",
+          email: "shubham@sybotstack.com",
+          website: "https://shubhamsharma.dev"
+        }
+      ];
+      
 
     return (
         <div className="bg-[#0C182A] py-24">
@@ -83,7 +83,7 @@ const Managers = () => {
                                 </p>
                                 
                                 {/* Bio */}
-                                <p className='text-gray-300 text-sm leading-relaxed mb-6'>
+                                <p className='text-gray-300 text-sm leading-relaxed mb-6 md:min-h-[100px]'>
                                     {manager.bio}
                                 </p>
                                 
