@@ -18,7 +18,7 @@ const AboveFold: React.FC<{ title: string, subtitle: string, ctaText: string, ba
             </div>
 
             {/* Centered Content Overlay */}
-            <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <div className="relative z-10 text-center max-w-4xl mx-auto px-4 mt-12 md:mt-0">
                 <div className="text-center text-white text-5xl font-bold mb-8">
                     <h1 className="leading-tight">
                         {title}
