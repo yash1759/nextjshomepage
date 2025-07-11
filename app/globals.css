@@ -144,3 +144,8 @@
 .animate-fade-in-delay-6 { animation-delay: 1.2s; }
 .animate-fade-in-delay-7 { animation-delay: 1.4s; }
 .animate-fade-in-delay-11 { animation-delay: 1.6s; }
+
+/* Carousel */
+.carousel-gap {
+  padding: 0 10px;
+} 

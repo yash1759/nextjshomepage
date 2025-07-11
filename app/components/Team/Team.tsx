@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react'
 import Container from '../container/Container'
 import Image from 'next/image'
-import Managers from './Managers'
 
 const Team = () => {
     const containerRef = useRef<HTMLDivElement>(null)
@@ -55,8 +54,6 @@ const Team = () => {
 
     return (
         <>
-            {/* Leadership Team Section */}
-            <Managers />
             
             {/* Team Members Section */}
             <div className="bg-[#051023] py-24">
