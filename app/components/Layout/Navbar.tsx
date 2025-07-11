@@ -73,7 +73,7 @@ export default function NavBar() {
                 {/* Desktop "HIRE US" Button */}
                 <div className="hidden lg:block">
                     <Link
-                        href="mailto:info@tribecadate.com"
+                        href="mailto:sybotstack@gmail.com"
                         className="bg-white px-6 py-4 text-xs tracking-wide font-light text-black transition-all duration-200 hover:bg-gray-200 hover:scale-105 transform"
                         onClick={() => setIsOpen(false)}
                     >
@@ -152,7 +152,7 @@ export default function NavBar() {
                             ))}
                             <li>
                                 <Link
-                                    href="mailto:info@tribecadate.com"
+                                    href="mailto:sybotstack@gmail.com"
                                     className="mt-8 inline-block rounded-none bg-white px-8 py-4 text-sm font-light text-black transition-all duration-200 hover:bg-gray-200 hover:scale-105 transform"
                                     onClick={() => setIsOpen(false)}
                                 >
