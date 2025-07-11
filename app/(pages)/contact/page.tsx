@@ -2,19 +2,22 @@ import React from 'react'
 import ContactHero from '../../components/HeroSection/ContactHero'
 import Contact from '../../components/Contact/Contact'
 import ContactForm from '../../components/Contact/ContactForm'
-import Testimonials from '../../components/Contact/Testimonials'
+import { contactData } from '../../data/contactData'
+import AboveFold from '../../components/AboveFold/AboveFold'
 
 const ContactPage = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <ContactHero />
+      <AboveFold 
+        title={contactData.hero.title}
+        subtitle={contactData.hero.subtitle}
+        ctaText={contactData.hero.ctaText}
+        backgroundImage={contactData.hero.backgroundImage}
+      />
       
       {/* Contact Information Section */}
       <Contact />
       
-      {/* Testimonials Section */}
-      <Testimonials />
       
       {/* Contact Form Section */}
       <ContactForm />
