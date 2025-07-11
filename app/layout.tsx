@@ -77,6 +77,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>  
+        <link rel="icon" href="/favicons/apple-touch-icon.png" />
+      </head>
       <body
         className={`${poppins.className} ${inter.className} antialiased`}
       >
