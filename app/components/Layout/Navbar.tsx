@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Sparkle } from 'lucide-react'
 import Image from 'next/image'
 
 export default function NavBar() {
