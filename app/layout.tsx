@@ -30,14 +30,14 @@ export async function generateMetadata(): Promise<Metadata> {
       address: false,
       telephone: false,
     },
-    metadataBase: new URL('https://sybotstack.com'),
+    metadataBase: new URL('https://myweb-iota-lemon.vercel.app'),  
     alternates: {
       canonical: canonical,
     },
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      url: `https://sybotstack.com${canonical}`,
+      url: `https://myweb-iota-lemon.vercel.app${canonical}`,
       title: ogTitle,
       description: ogDescription,
       siteName: 'Sybotstack',
