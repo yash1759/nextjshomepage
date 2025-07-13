@@ -30,19 +30,19 @@ const Howtowork = () => {
             title: "Seamless Remote Work Setup",
             description: "Empower your team with secure, high-speed access to all tools and files—anytime, anywhere.",
             cta: "Set up now",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/6876f5d9adf734001fa5a1c0_remote-work.avif"
+            image: "/images/1.jpg"
         },
         {
             title: "Data Backup & Recovery",
             description: "Ensure business continuity with automated, encrypted backups and fast recovery solutions.",
             cta: "Backup today",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/6876f5ef46bdc2f1d86d101d_data-backup.avif"
+            image: "/images/2.jpg"
         },
         {
             title: "Modernize Your Infrastructure",
             description: "Upgrade your network and hardware with scalable, high-performance IT infrastructure tailored for growth.",
             cta: "Upgrade now",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/6876f60325b9e341e37414e3_infrastructure.avif"
+            image: "/images/3.webp"
         },
     ];
 
