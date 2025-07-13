@@ -28,20 +28,20 @@ const Managers = () => {
         {
           name: "Yash Kumar",
           position: "Chief Executive Officer",
-          image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
+          image: "/images/managers/shubham.png",
           bio: "Yash is a seasoned full-stack developer and business leader with 15+ years of experience in scaling tech ventures and leading digital strategy.",
           linkedin: "https://linkedin.com/in/yash-kumar",
-          email: "yash@sybotstack.com",
-          website: "https://yashkumar.com"
+          email: "yash@example.com",
+          website: "https://example.com"
         },
         {
           name: "Shubham Sharma",
           position: "Chief Technology Officer",
-          image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif",
+          image: "/images/managers/shubham.png",
           bio: "Shubham is a full-stack engineer and cloud expert who leads the company's technical vision, infrastructure, and product innovation.",
           linkedin: "https://linkedin.com/in/shubham-sharma",
-          email: "shubham@sybotstack.com",
-          website: "https://shubhamsharma.dev"
+          email: "shubham@example.com",
+          website: "https://example.com"
         }
       ];
       
@@ -65,12 +65,12 @@ const Managers = () => {
                         >
                             <div className='flex flex-col items-center text-center'>
                                 {/* Profile Image */}
-                                <div className='relative w-32 h-32 rounded-full overflow-hidden mb-6 group-hover:scale-110 transition-transform duration-300'>
+                                <div className='relative border-2 border-white border-solid w-32 h-32 rounded-full overflow-hidden mb-6 group-hover:scale-110 transition-transform duration-300'>
                                     <Image 
                                         src={manager.image} 
                                         alt={manager.name} 
                                         fill 
-                                        className='object-cover' 
+                                        className='object-cover ' 
                                     />
                                 </div>
                                 
