@@ -28,27 +28,27 @@ const Team = () => {
         {
             title: "John Doe",
             position: "System Administrator",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
+            image: "/images/managers/yash.webp"
         },
         {
             title: "Jane Doe",
             position: "Cloud Engineer",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
+            image: "/images/managers/yash.webp"
         },
         {
             title: "John Smith",
             position: "Security Specialist",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
+            image: "/images/managers/yash.webp"
         },
         {
             title: "Jane Smith",
             position: "IT Strategy Consultant",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
+            image: "/images/managers/yash.webp"
         },
         {
             title: "Alex Johnson",
             position: "DevOps Engineer",
-            image: "https://cdn.prod.website-files.com/686d4049ce7f7422269655f3/686d410c75ab9a8ea2a6aef9_46badf08-742e-408e-99c5-1a34c082403c.avif"
+            image: "/images/managers/yash.webp"
         }
     ];
 
@@ -72,7 +72,7 @@ const Team = () => {
                                 style={{ transitionDelay: `${index * 150}ms` }}
                             >
                                 <div className='flex flex-col items-center text-center'>
-                                    <div className='relative w-28 md:w-32 h-28 md:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-110 transition-transform duration-300'>
+                                    <div className='relative w-28 md:w-32 border-2 border-white border-solid h-28 md:h-32 rounded-full overflow-hidden mb-4 group-hover:scale-110 transition-transform duration-300'>
                                         <Image src={item.image} alt={item.title} fill className='object-cover' />
                                     </div>
                                     <h3 className='text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-300 mb-2'>{item.title}</h3>
